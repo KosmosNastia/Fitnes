@@ -16,6 +16,8 @@
             android:name=".MainActivity"
             android:exported="false">
             <meta-data
+                android:noHistory="true"
+                android:theme="@style/Theme.Splash"
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
