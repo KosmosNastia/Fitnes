@@ -8,6 +8,7 @@
 
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rcViewDays"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="5dp"
@@ -31,7 +32,8 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="#DC6E6E">
 
             <ImageView
                 android:id="@+id/imageView5"
@@ -69,7 +71,7 @@
                 app:layout_constraintStart_toStartOf="@+id/imageView5" />
 
             <TextView
-                android:id="@+id/tvRestDay"
+                android:id="@+id/tvRestDays"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-black"

@@ -7,6 +7,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.fitnes.databinding.FragmentDaysBinding
 
 class DaysFragment : Fragment() {
@@ -20,9 +22,16 @@ class DaysFragment : Fragment() {
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initRcView()
+    }
+
     private fun initRcView() = with(binding){
         val adapter = DaysAdapter()
-
+        rcViewDays.layoutManager = LinearLayoutManager(activity as AppCompatActivity)
+        rcViewDays.adapter = adapter
+        adapter.submitList(fillDaysArray())
     }
 
     private fun fillDaysArray(): ArrayList<DayModel>{
