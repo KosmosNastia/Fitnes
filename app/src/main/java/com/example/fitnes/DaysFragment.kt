@@ -2,6 +2,7 @@ package com.example.fitnes
 
 import adapters.DayModel
 import adapters.DaysAdapter
+import adapters.ExerciseModel
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -43,12 +44,23 @@ class DaysFragment : Fragment(),DaysAdapter.Listener {
         return tArray
     }
 
+    private fun fillExerciseList(day: DayModel){
+        val templist = ArrayList<ExerciseModel>()
+        day.exercises.split(",").forEach {
+            val exercisesList = resources.getStringArray(R.array.exercise)
+            val exersise = exercisesList[it.toInt()]
+            val exersiseArray = exersise.split("|")
+            templist.add(ExerciseModel(exersiseArray[0],exersiseArray[1],exersiseArray[2]))
+        }
+    }
+
     companion object {
         @JvmStatic
         fun newInstance() = DaysFragment()
     }
 
     override fun onClick(day: DayModel) {
+        fillExerciseList(day)
         FragmentManager.setFragments(ExercisesListFragment.newInstance(),
             activity as AppCompatActivity)
     }
