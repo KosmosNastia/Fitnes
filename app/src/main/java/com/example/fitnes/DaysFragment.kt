@@ -10,8 +10,9 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.fitnes.databinding.FragmentDaysBinding
+import utils.FragmentManager
 
-class DaysFragment : Fragment() {
+class DaysFragment : Fragment(),DaysAdapter.Listener {
     private lateinit var binding: FragmentDaysBinding
 
     override fun onCreateView(
@@ -28,7 +29,7 @@ class DaysFragment : Fragment() {
     }
 
     private fun initRcView() = with(binding){
-        val adapter = DaysAdapter()
+        val adapter = DaysAdapter(this@DaysFragment)
         rcViewDays.layoutManager = LinearLayoutManager(activity as AppCompatActivity)
         rcViewDays.adapter = adapter
         adapter.submitList(fillDaysArray())
@@ -46,4 +47,10 @@ class DaysFragment : Fragment() {
         @JvmStatic
         fun newInstance() = DaysFragment()
     }
+
+    override fun onClick(day: DayModel) {
+        FragmentManager.setFragments(ExercisesListFragment.newInstance(),
+            activity as AppCompatActivity)
+    }
+
 }
