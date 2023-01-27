@@ -9,13 +9,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.fitnes.databinding.FragmentDaysBinding
 import utils.FragmentManager
+import utils.MainViewModel
 
 class DaysFragment : Fragment(),DaysAdapter.Listener {
     private lateinit var binding: FragmentDaysBinding
-
+    private val  model: MainViewModel by activityViewModels()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -52,6 +54,8 @@ class DaysFragment : Fragment(),DaysAdapter.Listener {
             val exersiseArray = exersise.split("|")
             templist.add(ExerciseModel(exersiseArray[0],exersiseArray[1],exersiseArray[2]))
         }
+        model.mutableListExersie.value = templist
+       // model.mutableListExersise.observe(viewLifecycleOwner)
     }
 
     companion object {
