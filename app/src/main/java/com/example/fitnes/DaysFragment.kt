@@ -18,6 +18,7 @@ import utils.MainViewModel
 class DaysFragment : Fragment(),DaysAdapter.Listener {
     private lateinit var binding: FragmentDaysBinding
     private val  model: MainViewModel by activityViewModels()
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
